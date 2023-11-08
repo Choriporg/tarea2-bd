@@ -2,10 +2,11 @@
 
 require "connect.php";
 
-$email= $new_password = "";
+$email= $new_password = $verify_new_password = "";
 
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
+    //Verificar la existencia del correo
     $check_existance = "SELECT EMAIL FROM USUARIO WHERE EMAIL = ?";
     $stmt = $link -> prepare($check_existance);
     $email = trim($_POST["email"]);
@@ -19,14 +20,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         exit;
     }else{
         $new_password = trim($_POST["new_password"]);
-        $hash = password_hash($new_password, PASSWORD_DEFAULT);
-        $update_query = "UPDATE USUARIO SET CONTRASEÑA = ? WHERE EMAIL = ?";
-        $update_stmt = $link -> prepare($update_query);
-        $update_stmt -> bind_param("ss", $hash, $email);
-        $update_stmt -> execute();
-        echo "Contraseña cambiada con exito, redirigiendo a Login";
-        header("Location: login.php");
-        exit;
+        $verify_new_password = trim($_POST["verify_new_password"]);
+        if($new_password == $verify_new_password){
+            $hash = password_hash($new_password, PASSWORD_DEFAULT);
+            $update_query = "UPDATE USUARIO SET CONTRASEÑA = ? WHERE EMAIL = ?";
+            $update_stmt = $link -> prepare($update_query);
+            $update_stmt -> bind_param("ss", $hash, $email);
+            $update_stmt -> execute();
+            echo "Contraseña cambiada con exito, redirigiendo a Login";
+            header("Location: login.php");
+            exit;
+        }else{
+            echo("Las contraseñas no coinciden.");
+        }
     }
 }
 ?>
@@ -41,6 +47,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <input type = "text" name = "email" placeholder = "Correo electrónico" value = "<?php echo $email; ?>" >
             <label> Nueva contraseña </label>
             <input type = "password" name = "new_password" placeholder = "Nueva contraseña" value = "<?php echo $new_password; ?>" >
+            <label> Verificar Contraseña </label>
+            <input type = "password" name = "verify_new_password" placeholder = "Repita su contraseña" value = "<?php echo $verify_new_password; ?>">
             <input type = "submit" value = "enviar">
         </form>
     </body>

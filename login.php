@@ -20,11 +20,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $stmt -> fetch();
         if(password_verify($password, $bd_password)){
             session_start();
+            $_SESSION["username"] = $email;
             $sql_query = "UPDATE USUARIO SET LAST_LOGIN = NOW() WHERE EMAIL = ?";
             $update_stmt = $link -> prepare($sql_query);
             $update_stmt -> bind_param("s", $email);
             $update_stmt -> execute();
-            echo ("Inicio de sesión exitoso.");
+            header("Location: main_page.php");
         }else{
             echo ("Clave incorrecta.");
         }
@@ -41,6 +42,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <label> Contraseña </label>
             <input type = "password" name = "password" placeholder = "Contraseña" value = "<?php echo $password; ?>">
             <input type = "submit" value = "enviar">
+            <a href = "reset_password.php"> No recuerdo la contraseña</a>
+            <a href = "register.php"> ¿No estás registrado? </a>  
         </form>
     </body>
 </html>
