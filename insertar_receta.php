@@ -29,7 +29,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $_SESSION["nombre_receta"] = $recepy_name;
         $_SESSION["numero_ingredientes"] = $numero_ingredientes;
 
-        header("Location ingresar_ingredientes.php");
+        header("Location: ingresar_ingredientes.php");
+        exit();
     }
 }
 
