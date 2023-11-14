@@ -16,6 +16,7 @@ if(isset($_SESSION["username"])){
     <body>
         <form action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method = "post">
             <a href = "insertar_receta.php"> Ingresar receta</a>
+            <a href = "ingresar_reseña.php"> Ingresar reseña</a>
         </form>
     </body>
 </html>

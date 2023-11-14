@@ -42,6 +42,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     </head>
     <body>
         <div>
+        <a href = "main_page.php">Pagina principal</a>
+
             <form action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method = "post" enctype = "multipart/form-data">
                 <label>Nombre receta:</label>
                 <input type = "text" name = "recepy_name" placeholder = "Nombre de la receta" value = "<?php echo $recepy_name; ?>">

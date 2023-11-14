@@ -68,6 +68,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 </head>
 
 <body>
+    <a href = "main_page.php">Pagina principal</a>
     <h1> Ingrese los detalles de los ingredientes</h1>
     <form action = "ingresar_ingredientes.php" method = "post">
         <?php
