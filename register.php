@@ -37,6 +37,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $insert_stmt ->bind_param("ssss", $email, $hash, $name, $num_almuerzos);
             if($insert_stmt -> execute()){
                 echo("Registro ingresado con exito!");
+                header("Location: login.php");
             }
         }else{
             echo("Las contraseñas no coinciden.");

@@ -51,7 +51,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $insert_stmt = $link -> prepare($review_query);
             $insert_stmt -> bind_param("ssiis", $email, $nombre_receta, $calificacion, $favorito, $comentarios);
             if($insert_stmt -> execute()){
-                echo("Query ejecutada con exito");
+                header("Location: main_page.php");
             }  
         }
     }

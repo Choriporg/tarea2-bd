@@ -55,14 +55,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             }
 
             $relation_stmt -> bind_param("ss", $nombre_receta, $nombre_ingrediente);
-            $relation_stmt -> execute();
+            if($relation_stmt -> execute()){
+                header("Location: main_page.php");
+            }
         }
     }
 }
 ?>
 
 <html>
-    
 <head>
     <title>Ingresar ingredientes</title>
 </head>
