@@ -1,8 +1,32 @@
 <?php
-
 require "connect.php";
-
 session_start();
+?>
+<title>Ingresar Receta</title>
+<head>
+    <meta charset="UTF-8">
+    <title>Sabor USM</title>
+    <style>
+        body {
+        margin: 0;
+        overflow-x: scroll;}
+
+        header {
+        background-color: #000000;
+        color: #ffffff;
+        padding: 20px;
+        text-align: center;
+        text-shadow: #a64747;
+    }
+    </style>
+</head>
+<header>
+    <h1>Sabor USM</h1>
+    <p>Bienvenido <?php echo $_SESSION['username'];?></p>
+</header>
+<a href = "main_page.php">Home</a>
+
+<?php
 $recepy_name = $tipo_plato = $contenido_imagen = $instrucciones = "";
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -37,13 +61,31 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 ?>
 
 <html>
-    <head>
-        <title> Ingresar receta.</title>
-    </head>
+<title>Ingrsar receta</title>
+<head>
+    <meta charset="UTF-8">
+    <title>Sabor USM</title>
+    <style>
+        body {
+        margin: 0;
+        overflow-x: scroll;}
+
+        header {
+        background-color: #000000;
+        color: #ffffff;
+        padding: 20px;
+        text-align: center;
+        text-shadow: #a64747;
+    }
+    </style>
+</head>
+<header>
+    <h1>Sabor USM</h1>
+</header>
+<a href = "main_page.html">Home</a>
+
     <body>
         <div>
-        <a href = "main_page.php">Pagina principal</a>
-
             <form action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method = "post" enctype = "multipart/form-data">
                 <label>Nombre receta:</label>
                 <input type = "text" name = "recepy_name" placeholder = "Nombre de la receta" value = "<?php echo $recepy_name; ?>">

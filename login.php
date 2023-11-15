@@ -1,30 +1,55 @@
 <?php
-
 require "connect.php";
+session_start();
+?>
+<title>Login</title>
+<head>
+    <meta charset="UTF-8">
+    <title>Sabor USM</title>
+    <style>
+        body {
+        margin: 0;
+        overflow-x: scroll;}
 
+        header {
+        background-color: #000000;
+        color: #ffffff;
+        padding: 20px;
+        text-align: center;
+        text-shadow: #a64747;
+    }
+    </style>
+</head>
+<header>
+    <h1>Sabor USM</h1>
+    <p>Bienvenido <?php echo $_SESSION['username'];?></p>
+</header>
+<a href = "main_page.php">Home</a>
+
+<?php
 $email = $password = "";
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
-    $sql = "SELECT EMAIL, CONTRASEÑA FROM USUARIO WHERE EMAIL = ?";
+    $sql = "SELECT EMAIL, CONTRASEÑA, NOMBRE FROM USUARIO WHERE EMAIL = ?";
     $email = trim($_POST["email"]);
     $password = trim($_POST["password"]);
     $stmt = $link -> prepare($sql);
     $stmt -> bind_param("s", $email);
     $stmt -> execute();
     $stmt -> store_result();
-    $stmt -> bind_result($bd_email, $bd_password);
+    $stmt -> bind_result($bd_email, $bd_password, $bd_username);
 
     //Verificar que el correo exista en la base de datos
     if($stmt -> num_rows() != 0){
         $stmt -> fetch();
         if(password_verify($password, $bd_password)){
-            session_start();
-            $_SESSION["username"] = $email;
             $sql_query = "UPDATE USUARIO SET LAST_LOGIN = NOW() WHERE EMAIL = ?";
             $update_stmt = $link -> prepare($sql_query);
             $update_stmt -> bind_param("s", $email);
             $update_stmt -> execute();
+            $_SESSION['username'] = $bd_username;
+            $_COOKIE['username'] = $bd_username;
             header("Location: main_page.php");
         }else{
             echo ("Clave incorrecta.");

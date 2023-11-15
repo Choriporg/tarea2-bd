@@ -1,0 +1,51 @@
+    <section id="Login">
+    <form id="Form_Login" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" onsubmit=authenticate(event)>
+        <p>Welcome back!</p><br>
+        <label for="email">Email:</label>
+        <input type="text" name="emailLogin" id="emailLogin" required>
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" name="passwordLogin" id="passwordLogin" required>
+        <br>
+        <button type="submit" name="submitButton" id="submitButton">Login</button>
+    </form>
+    <form id="Form_Register" action="register.php" method="post">
+        <p>Username between 3 and 15 characters<br>Password between 5 and 30 characters</p>
+        <label for="username">Username:</label>
+        <input type="text" name="username" id="usernameReg" placeholder="Name LastName" required>
+        <label for="email">Email @:</label>
+        <input type="text" name="email" id="emailReg" placeholder="example@email.com" required>
+        <br>
+        <label for="password">Password : </label>
+        <input type="password" name="password" id="passwordReg" placeholder="********" required>
+        <label for="password2">Verify Password:</label>
+        <input type="password" name="password2" id="passwordReg2" placeholder="********" required>
+        <br>
+        <input type="submit" value="Register">
+    </form>
+    <p id="not_user">not an user?</p>
+    <p id="is_user" display="none">are you an user?</p>
+    <button onclick="swapFormR()" id="register_button">Register!</button>
+    <button onclick="swapFormL()" id="login_button">Login</button>
+    <a href = "reset_password.php"> No recuerdo la contraseña</a>
+    </section>
+        
+    <script>
+        function swapFormR() {
+            // Get the form element by its ID and change its display style
+            document.getElementById("Form_Register").style.display = "block";
+            document.getElementById("Form_Login").style.display = "none";
+            document.getElementById("register_button").style.display = "none";
+            document.getElementById("login_button").style.display = "block";
+            document.getElementById("is_user").style.display = "block";
+            document.getElementById("not_user").style.display = "none"
+        }
+        function swapFormL() {
+            document.getElementById("Form_Register").style.display = "none";
+            document.getElementById("Form_Login").style.display = "block";
+            document.getElementById("register_button").style.display = "block";
+            document.getElementById("login_button").style.display = "none";
+            document.getElementById("is_user").style.display = "none";
+            document.getElementById("not_user").style.display = "block"
+        }
+

@@ -1,7 +1,32 @@
 <?php
+require "connect.php";
+session_start();
+?>
+<title>Votacion</title>
+<head>
+    <meta charset="UTF-8">
+    <title>Sabor USM</title>
+    <style>
+        body {
+        margin: 0;
+        overflow-x: scroll;}
 
-require"connect.php";  
+        header {
+        background-color: #000000;
+        color: #ffffff;
+        padding: 20px;
+        text-align: center;
+        text-shadow: #a64747;
+    }
+    </style>
+</head>
+<header>
+    <h1>Sabor USM</h1>
+    <p>Bienvenido <?php echo $_SESSION['username'];?></p>
+</header>
+<a href = "main_page.php">Home</a>
 
+<?php
 $email = $password = $verify_password = "";
 $name = "";
 $num_almuerzos = null;
@@ -37,8 +62,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $insert_stmt ->bind_param("ssss", $email, $hash, $name, $num_almuerzos);
             if($insert_stmt -> execute()){
                 echo("Registro ingresado con exito!");
-                header("Location: login.php");
+                session_start();
+                $_SESSION['username'] = $name;
+                $_COOKIE['username'] = $name;
+                header("Location: main_page.php");
             }
+
         }else{
             echo("Las contraseñas no coinciden.");
         }

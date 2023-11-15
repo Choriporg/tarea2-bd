@@ -1,4 +1,32 @@
 <?php
+require "connect.php";
+session_start();
+?>
+<title>Ingresar Ingredientes</title>
+<head>
+    <meta charset="UTF-8">
+    <title>Sabor USM</title>
+    <style>
+        body {
+        margin: 0;
+        overflow-x: scroll;}
+
+        header {
+        background-color: #000000;
+        color: #ffffff;
+        padding: 20px;
+        text-align: center;
+        text-shadow: #a64747;
+    }
+    </style>
+</head>
+<header>
+    <h1>Sabor USM</h1>
+    <p>Bienvenido <?php echo $_SESSION['username'];?></p>
+</header>
+<a href = "main_page.php">Home</a>
+
+<?php
 
 require "connect.php";
 session_start();
@@ -55,21 +83,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             }
 
             $relation_stmt -> bind_param("ss", $nombre_receta, $nombre_ingrediente);
-            if($relation_stmt -> execute()){
-                header("Location: main_page.php");
-            }
+            $relation_stmt -> execute();
         }
     }
 }
 ?>
 
 <html>
+    
 <head>
     <title>Ingresar ingredientes</title>
 </head>
 
 <body>
-    <a href = "main_page.php">Pagina principal</a>
     <h1> Ingrese los detalles de los ingredientes</h1>
     <form action = "ingresar_ingredientes.php" method = "post">
         <?php
