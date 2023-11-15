@@ -75,7 +75,11 @@ require "connect.php";
 
     <section id="Busqueda">
         <h2>Barra de busqueda</h2>
-        <p>habilitar.</p>
+        <form action="search.php" method="post">
+        <label for="search">Search:</label>
+        <input type="text" name="search" id="search">
+        <input type="submit" value="Search">
+        </form>
     </section>
     <section id="Tops Semanal">
         <h2>Tops de esta semana</h2>

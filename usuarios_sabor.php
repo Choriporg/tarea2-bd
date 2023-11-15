@@ -38,7 +38,8 @@ $stmt -> fetch();
     <p>Nombre: <?php echo $bd_username;?></p>
     <p>Last Session: <?php echo $lastLogin;?></p>
     <p>Almuerzos Disponibles: <?php echo $lunchesLeft;?></p>
-    <a href="">Editar perfil</a>
+    <a href="recetas_fav.php">Recetas Favoritas</a>
+    <a href="edit_profile.php">Editar perfil</a>
 
 </body>
 
