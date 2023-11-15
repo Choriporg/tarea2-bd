@@ -28,13 +28,6 @@ session_start();
 
 <?php
 
-require "connect.php";
-session_start();
-
-
-if(!isset($_SESSION["username"])){
-    header("Location: login.php");
-}
 
 $nombre_ingrediente = "";
 
@@ -103,7 +96,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $numero_ingredientes = (int)$_SESSION["numero_ingredientes"];
        }
 
-        for($cont = 0; $cont < $numero_ingredientes; $cont++){
+        for($cont = 0; $cont < 6; $cont++){
             echo "<div>";
             echo "<br></br>";
             echo '<label>Ingrediente ' . $cont . ':</label>';

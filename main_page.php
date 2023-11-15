@@ -62,6 +62,7 @@ require "connect.php";
     <nav>
         <a href="#" onclick="showPage('Home')">Sabor</a>
         <a href="#" onclick="showPage('Busqueda')">Busqueda</a>
+        <a href="#" onclick="showPage('Recetas')">Recetas</a>
         <a href="#" onclick="showPage('Tops Semanal')">Tops Semanal</a>
         <a href="#" onclick="showPage('Votacion Semanal')">Votacion Semanal</a>
         <a href="#" onclick="showPage('Usuario')">Usuario</a>
@@ -84,6 +85,11 @@ require "connect.php";
     <section id="Tops Semanal">
         <h2>Tops de esta semana</h2>
         <a href="tops_recetas.php">click me!</a>
+    </section>
+    <section id="Recetas">
+        <h2>Tops de esta semana</h2>
+        <a href="insertar_receta.php">insertar receta</a>
+        <a href="ingresar_ingredientes.php">insertar ingrediente</a>
     </section>
     <section id="Usuario">
         <h2>Ir a mi perfil</h2>
