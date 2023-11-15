@@ -49,6 +49,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $update_stmt -> bind_param("s", $email);
             $update_stmt -> execute();
             $_SESSION['username'] = $bd_username;
+            $_SESSION['email'] = $bd_email;
+            $_SESSION['password'] = $bd_password;
             $_COOKIE['username'] = $bd_username;
             header("Location: main_page.php");
         }else{

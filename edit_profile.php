@@ -33,25 +33,4 @@ $stmt -> fetch();
     <p>Bienvenido <?php echo $_SESSION['username'];?></p>
 </header>
 <a href = "main_page.php">Home</a>
-<body>
-    <p>Email: <?php echo $bd_email;?></p>
-    <p>Nombre: <?php echo $bd_username;?></p>
-    <p>Last Session: <?php echo $lastLogin;?></p>
-    <p>Almuerzos Disponibles: <?php echo $lunchesLeft;?></p>
-    <a href="">Editar perfil</a>
 
-</body>
-
-
-<?php
-
-/*
-    editar perfil <a href></a>
-                    crear/eliminar cuenta
-                    editar info de perfil
-                    visualizar info Usuario
-    */
-
-
-
-?>
